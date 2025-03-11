@@ -33,6 +33,28 @@
 			reg = <0>;
 			#address-cells = <1>;
 			#size-cells = <1>;
+			cpu-power-states = <&stop0 &stop1 &stop2>;
+		};
+
+		power-states {
+			stop0: state0 {
+				compatible = "zephyr,power-state";
+				power-state-name = "suspend-to-idle";
+				substate-id = <1>;
+				min-residency-us = <100>;
+			};
+			stop1: state1 {
+				compatible = "zephyr,power-state";
+				power-state-name = "suspend-to-idle";
+				substate-id = <2>;
+				min-residency-us = <500>;
+			};
+			stop2: state2 {
+				compatible = "zephyr,power-state";
+				power-state-name = "suspend-to-idle";
+				substate-id = <3>;
+				min-residency-us = <900>;
+			};
 		};
 	};
 
@@ -95,6 +117,7 @@
 			compatible = "st,stm32-flash-controller", "st,stm32g0-flash-controller";
 			reg = <0x40022000 0x400>;
 			interrupts = <3 0>;
+			clocks = <&rcc STM32_CLOCK(AHB1, 8U)>;
 
 			#address-cells = <1>;
 			#size-cells = <1>;

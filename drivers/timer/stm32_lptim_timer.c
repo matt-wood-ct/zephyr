@@ -517,6 +517,7 @@ static int sys_clock_driver_init(void)
 	LL_LPTIM_SetPrescaler(LPTIM, (__CLZ(__RBIT(lptim_clock_presc)) << LPTIM_CFGR_PRESC_Pos));
 
 #if defined(CONFIG_SOC_SERIES_STM32U5X) || \
+	defined(CONFIG_SOC_SERIES_STM32U0X) || \
 	defined(CONFIG_SOC_SERIES_STM32H5X) || \
 	defined(CONFIG_SOC_SERIES_STM32WBAX)
 	LL_LPTIM_OC_SetPolarity(LPTIM, LL_LPTIM_CHANNEL_CH1,
@@ -532,6 +533,7 @@ static int sys_clock_driver_init(void)
 
 #if defined(CONFIG_SOC_SERIES_STM32U5X) || \
 	defined(CONFIG_SOC_SERIES_STM32H5X) || \
+	defined(CONFIG_SOC_SERIES_STM32U0X) || \
 	defined(CONFIG_SOC_SERIES_STM32WBAX)
 	/* Enable the LPTIM before proceeding with configuration */
 	LL_LPTIM_Enable(LPTIM);
